@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<AssemblyName>SoundTouched</AssemblyName>
 		<Description>Change sound effects</Description>
-		<Version>0.7.2-1</Version>
+		<Version>0.7.2.1</Version>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<LangVersion>latest</LangVersion>
 		<RestoreAdditionalProjectSources>
