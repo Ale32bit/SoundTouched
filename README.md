@@ -11,7 +11,7 @@ This mod allows to replace the game sounds with custom ones.
 You can add a custom sound by placing a WAV file in the `sounds` folder in the plugins directory.
 The WAV file must be named exactly in this format `SoundName.wav`, `SoundName` is the name of the sound to replace.
 
-**The following list contains the sounds you can replace:** (currently incomplete)
+**The following list contains the sounds you can replace:**
 
 * **BgmBattleDawn**: Game music
 * **BgmEpilogue**: Main menu music
