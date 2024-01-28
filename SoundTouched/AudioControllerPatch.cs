@@ -53,7 +53,7 @@ class SfxComponentPatch
     [HarmonyPostfix]
     static void AwakePatch(SfxComponent __instance, ref AudioSource ___Audio)
     {
-        var wavFile = Plugin.WavFiles.FirstOrDefault(p => Path.GetFileNameWithoutExtension(p) == __instance.Name);
+        var wavFile = Plugin.WavFiles.FirstOrDefault(p => Path.GetFileNameWithoutExtension(p) == __instance.Name.ToString());
         if (wavFile == null)
             return;
 
@@ -71,9 +71,9 @@ class BgmComponentPatch
 {
     [HarmonyPatch("Awake")]
     [HarmonyPostfix]
-    static void AwakePatch(SfxComponent __instance, ref AudioSource ___Audio, ref bool ____hasIntro, AudioSource ____introAudioSource)
+    static void AwakePatch(SfxComponent __instance, ref AudioSource ___Audio)
     {
-        var wavFile = Plugin.WavFiles.FirstOrDefault(p => Path.GetFileNameWithoutExtension(p) == __instance.Name);
+        var wavFile = Plugin.WavFiles.FirstOrDefault(p => Path.GetFileNameWithoutExtension(p) == __instance.Name.ToString());
         if (wavFile == null)
             return;
 
@@ -84,18 +84,5 @@ class BgmComponentPatch
         var audioClip = Plugin.GetAudioClip(wavFile, AudioType.WAV);
         AudioControllerPatch.PatchAudioClip(__instance, audioClip);
         ___Audio.volume = volume;
-
-        ____hasIntro = false;
-
-        if (____hasIntro)
-        {
-            /*var dirPath = Path.GetDirectoryName(wavFile);
-            var extension = Path.GetExtension(wavFile);
-            var introFile = $"{__instance.Name}_Intro{extension}";
-
-            ____introAudioSource.volume = volume;*/
-        }
-
-        // TODO: add logic for _introAudioSource
     }
 }
